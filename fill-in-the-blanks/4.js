@@ -7,18 +7,13 @@ try {
     log: [],
     set: function(key, value) {
       this.state[key] = value;
-      return { [key]: this.state[key] };
     },
     remove: function(key) {
-      if (!this.state.hasOwnProperty(key)) return null;
-
-      const oldValue = this.state[key];
       delete this.state[key];
-      return { [key]: oldValue };
     },
     renderState: function() {
       const liElements = Object.keys(this.state)
-        .map(key => `\n <li><code>${key}: ${value}</code></li>`)
+        .map(key => `\n <li><code>${key}: ${this.state[key]}</code></li>`)
         .reduce((allLis, liStr) => allLis + liStr, "");
       return "<ul>" + liElements + "\n</ul>";
     },
@@ -50,12 +45,12 @@ try {
 
       const keyInputEl = document.createElement("input");
       keyInputEl.type = "text";
-      keyInputEl.name = "see";
+      keyInputEl.name = "keyInput";
       keyInputEl.placeholder = "key";
 
       const valueInputEl = document.createElement("input");
       valueInputEl.type = "text";
-      valueInputEl.name = "valueSee";
+      valueInputEl.name = "valueInput";
       valueInputEl.placeholder = "value";
 
       const setButtonEl = document.createElement("input");
