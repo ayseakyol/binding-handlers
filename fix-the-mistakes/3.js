@@ -76,7 +76,7 @@ try {
 
   obj.state.num = -2;
   obj.numToCharCode();
-  assert(JSON.stringify(obj.state) === '{"num":-1,"charCode":254}', "Test 4");
+  assert(JSON.stringify(obj.state) === '{"num":-2,"charCode":254}', "Test 4");
 
   obj.state.num = 140;
   obj.numToCharCode();
